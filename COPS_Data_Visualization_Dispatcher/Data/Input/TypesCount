@@ -1,0 +1,10 @@
+----Types-------------
+
+
+
+select type,count(type) as Total
+FROM VODA_SYS_Customer_Care_Req3388
+where ((dateadd(second, (create_date + 7200), 'Jan 1, 1970')
+between DATEADD(HOUR, -1, GETDATE()) AND SYSDATETIME() and (case_type='Quicklog')))
+group by type
+order by count(type) desc
